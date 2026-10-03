@@ -1,0 +1,237 @@
+/* ---------- ≥ 1025px : desktop ---------- */
+
+/* wider side margins, so the fixed back-to-top button sits beside the content, not on it */
+@media (min-width: 1025px) {
+  .container {
+    width: min(71.25rem, 84%);
+  }
+}
+
+/* ---------- ≤ 1024px : tablets ---------- */
+
+@media (max-width: 1024px) {
+  :root {
+    --bird-pace: 0.72;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .chip-1 {
+    left: -1rem;
+  }
+
+  .chip-2 {
+    right: -1rem;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* the nav list becomes a full-screen menu behind the logo and hamburger */
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    background: var(--bg-veil);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease), visibility 0.4s;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-link {
+    font-family: var(--font-head);
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    font-weight: 600;
+  }
+
+  .hero {
+    padding-top: calc(var(--header-h) + 3rem);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .hero-pic {
+    order: -1;
+    width: min(18.75rem, 70vw);
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-role-line,
+  .hero-actions,
+  .socials {
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .code-card,
+  .projects-grid {
+    width: 100%;
+    max-width: 35rem;
+    margin-inline: auto;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem;
+    text-align: center;
+  }
+
+  .footer-brand p {
+    margin-inline: auto;
+  }
+
+  .footer-links,
+  .footer-socials {
+    justify-content: center;
+  }
+
+  /* room for the fixed back-to-top button, so it never sits on the copyright line */
+  .footer-bottom {
+    padding-bottom: 5.5rem;
+    text-align: center;
+  }
+}
+
+/* ---------- ≤ 600px : phones ---------- */
+
+@media (max-width: 600px) {
+  :root {
+    --bird-pace: 0.5;
+  }
+
+  /* lighter sky on phones: fewer clouds, every other bird */
+  .cloud:nth-child(n + 4 of .cloud),
+  .bird:nth-child(even of .bird) {
+    display: none;
+  }
+
+  .section {
+    padding: 6rem 0;
+  }
+
+  .section + .section {
+    margin-top: 2rem;
+  }
+
+  .section-head {
+    margin-bottom: 2.5rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    max-width: 26.25rem;
+    margin-inline: auto;
+  }
+
+  .stats {
+    gap: 0.6rem;
+  }
+
+  .stat-card {
+    padding: 1rem 0.4rem;
+  }
+
+  .stat-card dd {
+    font-size: 1.6rem;
+  }
+
+  .stat-card dt {
+    font-size: 0.7rem;
+  }
+
+  .float-chip {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.72rem;
+  }
+
+  .chip-1 {
+    top: 30%;
+    left: -0.4rem;
+  }
+
+  .chip-2 {
+    bottom: 16%;
+    right: -0.4rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-self: stretch;
+  }
+
+  .code-card pre {
+    padding: 1rem 0.9rem;
+    font-size: 0.6rem;
+  }
+
+  .to-top {
+    right: 1rem;
+    bottom: 1rem;
+    width: 2.875rem;
+    height: 2.875rem;
+  }
+
+  .footer-links {
+    gap: 1.1rem;
+  }
+}
+
+/* ---------- ≤ 380px : small phones ---------- */
+
+@media (max-width: 380px) {
+  .hero-name {
+    font-size: 2.4rem;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .socials {
+    flex-wrap: wrap;
+  }
+
+  .code-card pre {
+    padding-inline: 0.7rem;
+  }
+}

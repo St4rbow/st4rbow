@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Irham Damar</title>
+  <meta name="description"
+    content="Irham Damar — Full-Stack Software Engineer building web applications end to end with React, Node.js, Express and MongoDB." />
+  <meta name="theme-color" content="#f9f7f7" />
+  <meta property="og:title" content="Irham Damar — Full-Stack Software Engineer" />
+  <meta property="og:description"
+    content="Portfolio of Irham Damar, a full-stack software engineer building modern web applications." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://st4rbow.github.io/portfolio-website/" />
+  <meta property="og:image" content="https://st4rbow.github.io/portfolio-website/assets/images/profile.png" />
+  <link rel="icon" href="assets/images/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/mediaqueries.css" />
+  <noscript>
+    <style>
+      .preloader { display: none; }
+      body.is-loading { overflow: auto; }
+    </style>
+  </noscript>
+</head>
+
+<body class="is-loading">
+  <svg hidden>
+    <symbol id="i-github" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+    </symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+    </symbol>
+    <symbol id="i-upwork" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.546-1.405 0-2.543-1.14-2.543-2.546V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path fill="currentColor"
+        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        d="M7 17 17 7M7 7h10v10" />
+    </symbol>
+    <symbol id="i-chevron-up" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+        d="m18 15-6-6-6 6" />
+    </symbol>
+  </svg>
+
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <p class="preloader-text">
+      <span class="preloader-ghost">Hello, World!</span>
+      <span class="preloader-typed"><span id="preloader-typed"></span><span class="typed-caret"></span></span>
+    </p>
+    <div class="preloader-bar"><span></span></div>
+  </div>
+
+  <div class="sky" aria-hidden="true">
+    <div class="cloud" style="--y:12%; --w:520px; --dur:78s; --delay:-8s"></div>
+    <div class="cloud" style="--y:26%; --w:380px; --dur:96s; --delay:-42s"></div>
+    <div class="cloud" style="--y:58%; --w:620px; --dur:120s; --delay:-70s"></div>
+    <div class="cloud" style="--y:70%; --w:440px; --dur:88s; --delay:-25s"></div>
+    <div class="cloud" style="--y:40%; --w:300px; --dur:64s; --delay:-55s"></div>
+    <div class="bird" style="--x:0%; --y:44%; --bw:28px; --dur:20s; --delay:-8.7s; --flap:.48s"></div>
+    <div class="bird" style="--x:6%; --y:49%; --bw:21px; --dur:20s; --delay:-8.3s; --flap:.56s"></div>
+    <div class="bird" style="--x:2%; --y:67%; --bw:25px; --dur:26s; --delay:-17.9s; --flap:.52s"></div>
+    <div class="bird" style="--x:8%; --y:72%; --bw:19px; --dur:26s; --delay:-17s; --flap:.6s"></div>
+    <div class="bird" style="--x:0%; --y:33%; --bw:22px; --dur:17s; --delay:-12.8s; --flap:.5s"></div>
+    <div class="bird" style="--x:0%; --y:15%; --bw:31px; --dur:15s; --delay:-1.3s; --flap:.46s"></div>
+    <div class="bird" style="--x:7%; --y:20%; --bw:23px; --dur:15s; --delay:-0.4s; --flap:.54s"></div>
+    <div class="bird" style="--x:3%; --y:25%; --bw:18px; --dur:15s; --delay:-2.2s; --flap:.62s"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <nav class="navbar container" aria-label="Primary">
+      <a href="#home" class="logo">Irham.</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Hire Me</a>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero" aria-label="Introduction">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="hero-eyebrow" data-reveal style="--reveal-delay:80ms">Hello, I'm</p>
+          <h1 class="hero-name" data-reveal style="--reveal-delay:160ms">Irham Damar</h1>
+          <p class="hero-role" data-reveal style="--reveal-delay:240ms">
+            <span class="hero-role-line hero-role-ghost" aria-hidden="true">I'm a&nbsp;<span class="typed"
+                id="typed-ghost"></span><span class="typed-caret"></span></span>
+            <span class="hero-role-line">I'm a&nbsp;<span class="typed" id="typed-text">Full-Stack Software
+                Engineer</span><span class="typed-caret" aria-hidden="true"></span></span>
+          </p>
+          <p class="hero-desc" data-reveal style="--reveal-delay:320ms">
+            I build complete web applications, from responsive, user-friendly
+            interfaces to the APIs and databases behind them.
+          </p>
+          <div class="hero-actions" data-reveal style="--reveal-delay:400ms">
+            <a href="#projects" class="btn btn-primary">View My Work
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+            <a href="#contact" class="btn btn-outline">Contact Me</a>
+          </div>
+          <ul class="socials" data-reveal style="--reveal-delay:480ms">
+            <li><a href="https://github.com/St4rbow" target="_blank" rel="noopener" class="social-btn"
+                aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg></a></li>
+            <li><a href="https://www.linkedin.com/in/irham-damar-761697390/" target="_blank" rel="noopener"
+                class="social-btn" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin" /></svg></a></li>
+            <li><a href="https://www.upwork.com/freelancers/~01c9f83bf387987575" target="_blank" rel="noopener"
+                class="social-btn" aria-label="Upwork"><svg class="icon" aria-hidden="true"><use href="#i-upwork" /></svg></a></li>
+            <li><a href="mailto:dstarbow@gmail.com" class="social-btn" aria-label="Email"><svg
+                  class="icon" aria-hidden="true"><use href="#i-mail" /></svg></a></li>
+          </ul>
+        </div>
+
+        <figure class="hero-pic" data-reveal="zoom" style="--reveal-delay:300ms">
+          <div class="hero-pic-ring" aria-hidden="true"></div>
+          <div class="hero-pic-frame" data-tilt>
+            <img src="assets/images/profile.png" alt="Portrait of Irham Damar" width="760" height="1013" />
+          </div>
+          <span class="float-chip chip-1" aria-hidden="true"><span class="chip-icon">&lt;/&gt;</span> Full-Stack Engineer</span>
+          <span class="float-chip chip-2" aria-hidden="true"><span class="chip-icon">★</span> 1+ Year Experience</span>
+        </figure>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-eyebrow">Get To Know More</p>
+          <h2 class="section-title">About Me</h2>
+        </header>
+
+        <div class="about-grid">
+          <figure class="code-card" data-reveal="left" data-tilt>
+            <figcaption class="code-card-bar">
+              <span class="code-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="code-card-file">about-me.js</span>
+            </figcaption>
+<pre><code><span class="c-com">// a quick snapshot</span>
+<span class="c-key">const</span> <span class="c-var">developer</span> = {
+  <span class="c-prop">name</span>: <span class="c-str">"Irham Damar"</span>,
+  <span class="c-prop">role</span>: <span class="c-str">"Full-Stack Software Engineer"</span>,
+  <span class="c-prop">skills</span>: [<span class="c-str">"JavaScript"</span>, <span class="c-str">"TypeScript"</span>,
+           <span class="c-str">"React"</span>, <span class="c-str">"Node.js"</span>, <span class="c-str">"Express"</span>,
+           <span class="c-str">"MongoDB"</span>, <span class="c-str">"Git"</span>],
+  <span class="c-prop">focus</span>: <span class="c-str">"Reliable end-to-end web apps"</span>,
+  <span class="c-prop">openToWork</span>: <span class="c-bool">true</span>,
+};</code></pre>
+          </figure>
+
+          <div class="about-text" data-reveal="right">
+            <p>
+              I'm a full-stack software engineer who builds web applications end to
+              end, <strong>from responsive, user-friendly interfaces to the APIs and
+                databases that power them</strong>. I'm dedicated to delivering
+              high-quality results and continuously improving my skills.
+            </p>
+            <p>
+              On the front end I work with HTML, CSS, JavaScript, TypeScript, React and
+              Tailwind CSS; on the back end with Node.js, Express and MongoDB, with
+              Git/GitHub throughout. I write clean code and make sure every app works
+              great on desktop, tablet and mobile.
+            </p>
+            <p>
+              Looking for a reliable engineer who is eager to learn and easy to
+              communicate with? <strong>Let's bring your ideas to life.</strong>
+            </p>
+
+            <dl class="stats">
+              <div class="stat-card" data-reveal>
+                <dt>Years<br />Experience</dt>
+                <dd>1+</dd>
+              </div>
+              <div class="stat-card" data-reveal style="--reveal-delay:120ms">
+                <dt>Technologies<br />Used</dt>
+                <dd>10+</dd>
+              </div>
+              <div class="stat-card" data-reveal style="--reveal-delay:240ms">
+                <dt>Commitment<br />To Quality</dt>
+                <dd>100%</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-eyebrow">Explore My</p>
+          <h2 class="section-title">Skills &amp; Tools</h2>
+        </header>
+
+        <ul class="skills-grid">
+          <li class="skill-card" data-tilt data-reveal style="--sc:#112d4e">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">&lt;/&gt;</span>
+              <div>
+                <h3>HTML5</h3>
+                <p>Semantic markup</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#17365a; --reveal-delay:80ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">{ }</span>
+              <div>
+                <h3>CSS3</h3>
+                <p>Layouts &amp; animations</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#1c3e66; --reveal-delay:160ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">JS</span>
+              <div>
+                <h3>JavaScript</h3>
+                <p>Front end &amp; back end</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#224772">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">TS</span>
+              <div>
+                <h3>TypeScript</h3>
+                <p>Typed, safer code</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#28507e; --reveal-delay:80ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">⚛</span>
+              <div>
+                <h3>React.js</h3>
+                <p>Component-based UIs</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#2e588b; --reveal-delay:160ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">N</span>
+              <div>
+                <h3>Node.js</h3>
+                <p>Server-side JavaScript</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#346197">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">Ex</span>
+              <div>
+                <h3>Express.js</h3>
+                <p>REST APIs</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#3969a3; --reveal-delay:80ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">DB</span>
+              <div>
+                <h3>MongoDB</h3>
+                <p>NoSQL databases</p>
+              </div>
+            </div>
+          </li>
+          <li class="skill-card" data-tilt data-reveal style="--sc:#3f72af; --reveal-delay:160ms">
+            <div class="skill-head">
+              <span class="skill-badge" aria-hidden="true">Git</span>
+              <div>
+                <h3>Git &amp; GitHub</h3>
+                <p>Version control</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <ul class="chips" data-reveal style="--reveal-delay:200ms">
+          <li>Responsive Design</li>
+          <li>Tailwind CSS</li>
+          <li>Clean Code</li>
+          <li>GitHub Pages</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-eyebrow">Browse My Recent</p>
+          <h2 class="section-title">Featured Projects</h2>
+        </header>
+
+        <div class="projects-grid">
+          <article class="project-card" data-tilt data-reveal>
+            <div class="project-thumb">
+              <img src="assets/images/ensyena-logo.webp" alt="ENSYENA logo" width="900" height="900" loading="lazy" />
+              <div class="project-overlay">
+                <a href="https://github.com/St4rbow/ensyena" target="_blank" rel="noopener" class="overlay-btn"
+                  tabindex="-1" aria-hidden="true"><svg class="icon"><use href="#i-github" /></svg></a>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>ENSYENA</h3>
+              <p>An expense tracker and finance dashboard on the MERN stack, written end to end in TypeScript.</p>
+              <ul class="project-tags">
+                <li>MongoDB</li>
+                <li>Express.js</li>
+                <li>React.js</li>
+                <li>Node.js</li>
+              </ul>
+              <a href="https://github.com/St4rbow/ensyena" target="_blank" rel="noopener" class="project-link">
+                Source Code <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg>
+              </a>
+            </div>
+          </article>
+
+          <div class="project-card project-cta" data-reveal style="--reveal-delay:150ms">
+            <span class="cta-plus" aria-hidden="true">+</span>
+            <h3>Your project could be here</h3>
+            <p>I'm open for freelance projects — let's build something great together.</p>
+            <a href="#contact" class="btn btn-outline">Start a Project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-eyebrow">Get In Touch</p>
+          <h2 class="section-title">Contact Me</h2>
+        </header>
+
+        <p class="contact-lead" data-reveal style="--reveal-delay:80ms">
+          Have a project in mind or just want to say hi? My inbox is always open —
+          I'll get back to you as soon as I can.
+        </p>
+
+        <ul class="contact-grid">
+          <li>
+            <a href="mailto:dstarbow@gmail.com" class="contact-card" data-tilt data-reveal>
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg></span>
+              <span class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">dstarbow@gmail.com</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/irham-damar-761697390/" target="_blank" rel="noopener"
+              class="contact-card" data-tilt data-reveal style="--reveal-delay:100ms">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-linkedin" /></svg></span>
+              <span class="contact-text">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">Irham Damar</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.upwork.com/freelancers/~01c9f83bf387987575" target="_blank" rel="noopener"
+              class="contact-card" data-tilt data-reveal style="--reveal-delay:200ms">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-upwork" /></svg></span>
+              <span class="contact-text">
+                <span class="contact-label">Upwork</span>
+                <span class="contact-value">Hire me on Upwork</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/St4rbow" target="_blank" rel="noopener" class="contact-card" data-tilt
+              data-reveal style="--reveal-delay:300ms">
+              <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-github" /></svg></span>
+              <span class="contact-text">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">@St4rbow</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <p class="contact-cta" data-reveal style="--reveal-delay:200ms">
+          <a href="mailto:dstarbow@gmail.com" class="btn btn-primary btn-lg">Say Hello 👋</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo">Irham.</a>
+        <p>Full-stack software engineer building clean, modern web apps.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <ul class="footer-socials">
+        <li><a href="https://github.com/St4rbow" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon"
+              aria-hidden="true"><use href="#i-github" /></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/irham-damar-761697390/" target="_blank" rel="noopener"
+            aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin" /></svg></a></li>
+        <li><a href="mailto:dstarbow@gmail.com" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg></a></li>
+      </ul>
+    </div>
+    <p class="container footer-bottom">
+      <small>&copy; <span id="year">2026</span> Irham Damar. All rights reserved.</small>
+    </p>
+  </footer>
+
+  <a href="#home" class="to-top" id="to-top" aria-label="Back to top">
+    <svg class="progress-ring" viewBox="0 0 48 48" aria-hidden="true">
+      <circle class="ring-bg" cx="24" cy="24" r="22" />
+      <circle class="ring-fill" cx="24" cy="24" r="22" />
+    </svg>
+    <svg class="icon" aria-hidden="true"><use href="#i-chevron-up" /></svg>
+  </a>
+
+  <script src="assets/script/main.js"></script>
+</body>
+
+</html>
