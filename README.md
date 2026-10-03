@@ -1,7 +1,7 @@
-<h1 align="center">Hi, I'm Irham Damar</h1>
+<h1 align="center">Hello World!, I'm Irham Damar</h1>
 
 <p align="center">
-  <a href="https://st4rbow.github.io/portfolio-website/">
+  <a href="https://irhamdamar.com/">
     <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=26&duration=2800&pause=1200&color=3F72AF&center=true&vCenter=true&width=560&lines=Full-Stack+Software+Engineer;Freelance+Web+Developer;UI+Enthusiast;Lifelong+Learner" alt="Full-Stack Software Engineer, Freelance Web Developer, UI Enthusiast, Lifelong Learner" />
   </a>
 </p>
@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://st4rbow.github.io/portfolio-website/"><img src="https://img.shields.io/badge/Portfolio-112d4e?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://irhamdamar.com/"><img src="https://img.shields.io/badge/Portfolio-112d4e?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Website" /></a>
   <a href="https://www.linkedin.com/in/irham-damar-761697390/"><img src="https://img.shields.io/badge/LinkedIn-3f72af?style=for-the-badge" alt="LinkedIn" /></a>
   <a href="https://www.upwork.com/freelancers/~01c9f83bf387987575"><img src="https://img.shields.io/badge/Upwork-3f72af?style=for-the-badge&logo=upwork&logoColor=white" alt="Upwork" /></a>
   <a href="mailto:dstarbow@gmail.com"><img src="https://img.shields.io/badge/Email-3f72af?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
@@ -25,7 +25,7 @@
 - Full-stack software engineer with 1+ year of experience
 - I build web apps end to end: React on the front end; Node.js, Express and MongoDB on the back end
 - I care about clean code and interfaces that work well on desktop, tablet and mobile
-- Open for freelance work, on [Upwork](https://www.upwork.com/freelancers/~01c9f83bf387987575) or by [email](mailto:dstarbow@gmail.com)
+- Open for freelance work, on [email](mailto:dstarbow@gmail.com)
 
 ## Tech stack
 
@@ -43,4 +43,4 @@
 
 ## Let's work together
 
-Have a project in mind or just want to say hi? Check out my [portfolio](https://st4rbow.github.io/portfolio-website/) or send me an [email](mailto:dstarbow@gmail.com). I'll get back to you as soon as I can.
+Have a project in mind or just want to say hi? Check out my [portfolio](https://irhamdamar.com/) or send me an [email](mailto:dstarbow@gmail.com). I'll get back to you as soon as I can.
