@@ -1,188 +1,249 @@
-(() => {
-  "use strict";
+(function () {
+  'use strict';
 
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var whenPreloaded = window.whenPreloaded || function (fn) { fn(); };
+  var header = document.getElementById('site-header');
 
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-
-  document.body.classList.add("js");
-
-  /* ---------- Preloader ---------- */
-  const PRELOADER_MS = 1000;
-  const preloader = $("#preloader");
-  const greeting = $("#preloader-typed");
-  const greetingText = $(".preloader-ghost").textContent;
-  const charMs = reduceMotion ? 0 : (PRELOADER_MS * 0.7) / greetingText.length;
-
-  // type the greeting over the first 70% of the preloader, then hold it
-  for (let i = 1; i <= greetingText.length; i++) {
-    setTimeout(() => (greeting.textContent = greetingText.slice(0, i)), charMs * i);
+  function initYear() {
+    document.getElementById('year').textContent = String(new Date().getFullYear());
   }
 
-  setTimeout(() => {
-    preloader.classList.add("hidden");
-    document.body.classList.remove("is-loading");
-    setTimeout(() => preloader.remove(), 700);
-  }, PRELOADER_MS);
+  function initMenu() {
+    var button = document.getElementById('hamburger');
+    var links = document.getElementById('nav-links');
 
-  /* ---------- Typing effect ---------- */
-  const typed = $("#typed-text");
-  const roles = ["Full-Stack Software Engineer", "Freelance Web Developer", "UI Enthusiast", "Lifelong Learner"];
-  $("#typed-ghost").textContent = roles.reduce((a, b) => (b.length > a.length ? b : a));
-
-  if (!reduceMotion) {
-    let role = 0;
-    let chars = roles[0].length;
-    let deleting = true;
-
-    const tick = () => {
-      const word = roles[role];
-      chars += deleting ? -1 : 1;
-      typed.textContent = word.slice(0, chars);
-
-      let delay = deleting ? 38 : 70 + Math.random() * 60;
-      if (!deleting && chars === word.length) {
-        deleting = true;
-        delay = 1900;
-      } else if (deleting && chars === 0) {
-        deleting = false;
-        role = (role + 1) % roles.length;
-        delay = 350;
-      }
-      setTimeout(tick, delay);
-    };
-
-    setTimeout(tick, PRELOADER_MS + 1500);
-  }
-
-  /* ---------- Header, back-to-top ring ---------- */
-  const header = $("#site-header");
-  const toTop = $("#to-top");
-  const ringFill = $(".ring-fill", toTop);
-  const RING_LENGTH = 2 * Math.PI * 22;
-  let lastY = scrollY;
-  let scrollQueued = false;
-
-  const onScroll = () => {
-    const y = scrollY;
-    const max = document.documentElement.scrollHeight - innerHeight;
-    const progress = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
-
-    header.classList.toggle("scrolled", y > 30);
-    if (y > 500 && y > lastY + 6) header.classList.add("hidden");
-    else if (y < lastY - 6 || y <= 500) header.classList.remove("hidden");
-
-    toTop.classList.toggle("visible", y > 600);
-    ringFill.style.strokeDashoffset = RING_LENGTH * (1 - progress);
-
-    lastY = y;
-    scrollQueued = false;
-  };
-
-  addEventListener(
-    "scroll",
-    () => {
-      if (scrollQueued) return;
-      scrollQueued = true;
-      requestAnimationFrame(onScroll);
-    },
-    { passive: true }
-  );
-  onScroll();
-
-  /* ---------- Scrollspy ---------- */
-  const navLinks = $$(".nav-link");
-
-  const spy = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        navLinks.forEach((link) => link.classList.toggle("active", link.hash === `#${entry.target.id}`));
-      }
-    },
-    { rootMargin: "-45% 0px -50% 0px" }
-  );
-  $$("main section[id]").forEach((section) => spy.observe(section));
-
-  /* ---------- Scroll reveal ---------- */
-  // Once the entrance finishes, drop the attribute so each component's own
-  // hover transitions take over from the reveal transition.
-  const reveal = (el) => {
-    el.classList.add("revealed");
-    if (reduceMotion) {
-      el.removeAttribute("data-reveal");
-      return;
+    function setOpen(open) {
+      header.classList.toggle('nav-open', open);
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     }
-    el.addEventListener("transitionend", function done(e) {
-      if (e.target !== el) return;
-      el.removeEventListener("transitionend", done);
-      el.removeAttribute("data-reveal");
+
+    button.addEventListener('click', function () {
+      setOpen(!header.classList.contains('nav-open'));
     });
-  };
+    links.addEventListener('click', function (event) {
+      if (event.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') setOpen(false);
+    });
+  }
 
-  const revealer = new IntersectionObserver(
-    (entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        revealer.unobserve(entry.target);
-        reveal(entry.target);
+  function initScrollState() {
+    var toTop = document.getElementById('to-top');
+    var ticking = false;
+
+    function update() {
+      var y = window.scrollY;
+      header.classList.toggle('is-scrolled', y > 10);
+      toTop.classList.toggle('visible', y > 400);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
       }
-    },
-    { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
-  );
-  // start after the preloader so the hero's entrance isn't spent behind it
-  setTimeout(() => $$("[data-reveal]").forEach((el) => revealer.observe(el)), PRELOADER_MS);
+    }, { passive: true });
+    update();
+  }
 
-  /* ---------- 3D tilt cards ---------- */
-  if (finePointer && !reduceMotion) {
-    $$("[data-tilt]").forEach((card) => {
-      // measured once on enter: the tilt itself would skew later measurements
-      let rect = null;
-
-      card.addEventListener("pointerenter", () => {
-        rect = card.getBoundingClientRect();
-        card.style.transition = "transform 0.12s ease-out";
+  function initActiveLink() {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var hash = '#' + entry.target.id;
+        links.forEach(function (link) {
+          var active = link.getAttribute('href') === hash;
+          link.classList.toggle('active', active);
+          if (active) link.setAttribute('aria-current', 'true');
+          else link.removeAttribute('aria-current');
+        });
       });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach(function (link) {
+      observer.observe(document.querySelector(link.getAttribute('href')));
+    });
+  }
 
-      card.addEventListener("pointermove", (e) => {
-        if (!rect) return;
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${-y * 7}deg) rotateY(${x * 7}deg) scale(1.02)`;
+  function initTypewriter() {
+    document.querySelectorAll('[data-typewriter]').forEach(function (box) {
+      var ghost = box.querySelector('.typewriter-text').cloneNode(true);
+      ghost.className = 'typewriter-ghost';
+      ghost.setAttribute('aria-hidden', 'true');
+      var walker = document.createTreeWalker(ghost, NodeFilter.SHOW_TEXT);
+      var chunks = [];
+      while (walker.nextNode()) {
+        chunks.push({ node: walker.currentNode, text: walker.currentNode.nodeValue.replace(/\s+/g, ' ') });
+      }
+      chunks.forEach(function (chunk) {
+        chunk.node.nodeValue = '';
       });
+      var caret = document.createElement('span');
+      caret.className = 'typewriter-caret';
+      box.appendChild(ghost);
 
-      card.addEventListener("pointerleave", () => {
-        rect = null;
-        card.style.transition = "transform 0.5s var(--ease)";
-        card.style.transform = "";
+      whenPreloaded(function () {
+        if (reduceMotion) {
+          chunks.forEach(function (chunk) {
+            chunk.node.nodeValue = chunk.text;
+          });
+          ghost.appendChild(caret);
+          return;
+        }
+        var index = 0;
+        var pos = 0;
+        setTimeout(function type() {
+          var chunk = chunks[index];
+          pos += 1;
+          chunk.node.nodeValue = chunk.text.slice(0, pos);
+          chunk.node.parentNode.insertBefore(caret, chunk.node.nextSibling);
+          if (pos >= chunk.text.length) {
+            index += 1;
+            pos = 0;
+          }
+          if (index < chunks.length) setTimeout(type, 16 + Math.random() * 30);
+        }, 900);
       });
     });
   }
 
-  /* ---------- Mobile menu ---------- */
-  const hamburger = $("#hamburger");
-  const menu = $("#nav-links");
+  function initChannelSwitch() {
+    var crt = document.getElementById('crt');
+    whenPreloaded(function () {
+      crt.classList.add('is-switching');
+      setTimeout(function () {
+        crt.classList.remove('is-switching');
+      }, 600);
+    });
+  }
 
-  const setMenu = (open) => {
-    menu.classList.toggle("open", open);
-    hamburger.setAttribute("aria-expanded", open);
-    hamburger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    document.body.classList.toggle("no-scroll", open);
-  };
+  function initMusic() {
+    var button = document.getElementById('sound-toggle');
+    var state = button.querySelector('.sound-state');
+    var audio = document.getElementById('bg-music');
+    var VOLUME = 0.35;
+    var STEP = 0.05;
+    var MUTED_KEY = 'music-muted';
+    var wantOn = false;
+    var fadeTimer;
 
-  hamburger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
-  menu.addEventListener("click", (e) => {
-    if (e.target === menu || e.target.closest("a")) setMenu(false);
-  });
-  addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setMenu(false);
-  });
-  matchMedia("(min-width: 1025px)").addEventListener("change", (e) => {
-    if (e.matches) setMenu(false);
-  });
+    function fadeTo(target, done) {
+      clearInterval(fadeTimer);
+      fadeTimer = setInterval(function () {
+        var diff = target - audio.volume;
+        if (Math.abs(diff) <= STEP) {
+          audio.volume = target;
+          clearInterval(fadeTimer);
+          if (done) done();
+          return;
+        }
+        audio.volume += diff > 0 ? STEP : -STEP;
+      }, 40);
+    }
 
-  /* ---------- Footer year ---------- */
-  $("#year").textContent = new Date().getFullYear();
+    function setOn(on) {
+      button.classList.toggle('is-on', on);
+      button.setAttribute('aria-pressed', String(on));
+      state.textContent = on ? 'On' : 'Off';
+    }
+
+    function rememberMuted(muted) {
+      try {
+        localStorage.setItem(MUTED_KEY, muted ? '1' : '0');
+      } catch (e) {}
+    }
+
+    function wasMuted() {
+      try {
+        return localStorage.getItem(MUTED_KEY) === '1';
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function start() {
+      wantOn = true;
+      setOn(true);
+      if (audio.paused) audio.volume = 0;
+      return audio.play().then(function () {
+        fadeTo(VOLUME);
+      }, function (error) {
+        wantOn = false;
+        setOn(false);
+        throw error;
+      });
+    }
+
+    function stop() {
+      wantOn = false;
+      setOn(false);
+      fadeTo(0, function () {
+        if (!wantOn) audio.pause();
+      });
+    }
+
+    button.addEventListener('click', function () {
+      rememberMuted(wantOn);
+      if (wantOn) stop();
+      else start().catch(function () {});
+    });
+
+    // Browsers refuse audible autoplay before the visitor interacts, so the preloader waits for one click.
+    function waitForConnect(preloader) {
+      var enter = document.getElementById('preloader-enter');
+      return new Promise(function (resolve) {
+        function connect() {
+          preloader.removeEventListener('click', connect);
+          document.removeEventListener('keydown', connect);
+          start().catch(function () {});
+          resolve();
+        }
+        preloader.removeAttribute('aria-hidden');
+        preloader.classList.add('is-waiting');
+        enter.hidden = false;
+        enter.focus();
+        preloader.addEventListener('click', connect);
+        document.addEventListener('keydown', connect);
+      });
+    }
+
+    window.holdPreloader(function (preloader) {
+      if (wasMuted()) return;
+      audio.currentTime = 0;
+      return start().catch(function () {
+        return waitForConnect(preloader);
+      });
+    });
+  }
+
+  function initTilt() {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var MAX_DEG = 7;
+    document.querySelectorAll('[data-tilt]').forEach(function (el) {
+      el.addEventListener('pointermove', function (event) {
+        var rect = el.getBoundingClientRect();
+        var x = (event.clientX - rect.left) / rect.width - 0.5;
+        var y = (event.clientY - rect.top) / rect.height - 0.5;
+        el.style.setProperty('--rx', (-y * MAX_DEG).toFixed(2) + 'deg');
+        el.style.setProperty('--ry', (x * MAX_DEG).toFixed(2) + 'deg');
+      });
+      el.addEventListener('pointerleave', function () {
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
+  }
+
+  initYear();
+  initMenu();
+  initScrollState();
+  initActiveLink();
+  initTypewriter();
+  initChannelSwitch();
+  initMusic();
+  initTilt();
 })();
