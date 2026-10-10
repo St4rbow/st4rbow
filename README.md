@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://irhamdamar.com/">
-    <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=26&duration=2800&pause=1200&color=3F72AF&center=true&vCenter=true&width=560&lines=Full-Stack+Software+Engineer;Freelance+Web+Developer;UI+Enthusiast;Lifelong+Learner" alt="Full-Stack Software Engineer, Freelance Web Developer, UI Enthusiast, Lifelong Learner" />
+    <img src="https://readme-typing-svg.demolab.com?font=Space+Grotesk&weight=600&size=26&duration=2800&pause=1200&color=3F72AF&center=true&vCenter=true&width=560&lines=Full-Stack+Software+Engineer;Lifelong+Learner" alt="Full-Stack Software Engineer, Lifelong Learner" />
   </a>
 </p>
 
