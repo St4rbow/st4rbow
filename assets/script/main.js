@@ -151,15 +151,16 @@
       state.textContent = on ? 'On' : 'Off';
     }
 
+    // Muting only lasts for the tab session, so every fresh visit opens with music again.
     function rememberMuted(muted) {
       try {
-        localStorage.setItem(MUTED_KEY, muted ? '1' : '0');
+        sessionStorage.setItem(MUTED_KEY, muted ? '1' : '0');
       } catch (e) {}
     }
 
     function wasMuted() {
       try {
-        return localStorage.getItem(MUTED_KEY) === '1';
+        return sessionStorage.getItem(MUTED_KEY) === '1';
       } catch (e) {
         return false;
       }
