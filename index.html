@@ -18,14 +18,18 @@
   <link rel="icon" href="assets/images/icon.png?v=1" type="image/png" sizes="256x256" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts load without blocking first paint; the preloader covers the swap. -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700;800;900&family=Tinos:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
-    rel="stylesheet" />
+    rel="stylesheet" media="print" onload="this.media='all'" />
   <script>document.documentElement.classList.add('js');</script>
-  <link rel="stylesheet" href="assets/css/retro.css?v=18" />
-  <link rel="stylesheet" href="assets/css/style.css?v=18" />
+  <link rel="stylesheet" href="assets/css/retro.css?v=19" />
+  <link rel="stylesheet" href="assets/css/style.css?v=19" />
   <link rel="stylesheet" href="assets/css/mediaqueries.css?v=18" />
   <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700;800;900&family=Tinos:ital,wght@0,400;0,700;1,400&family=VT323&display=swap"
+      rel="stylesheet" />
     <style>
       .preloader {
         display: none;
@@ -384,7 +388,10 @@
             <figure class="hero-pic" data-reveal="zoom" style="--reveal-delay:100ms">
               <div class="hero-pic-frame" data-tilt>
                 <img src="assets/images/profile-photo.webp"
-                  alt="Illustration of Irham Damar in a spacesuit, making a peace sign" width="720" height="1556" />
+                  srcset="assets/images/profile-photo-360.webp 360w, assets/images/profile-photo-540.webp 540w, assets/images/profile-photo.webp 720w"
+                  sizes="352px"
+                  alt="Illustration of Irham Damar in a spacesuit, making a peace sign" width="720" height="1556"
+                  loading="lazy" decoding="async" />
               </div>
               <span class="float-chip chip-1" aria-hidden="true"><span class="chip-icon">&lt;/&gt;</span> Software
                 Engineer</span>
@@ -606,7 +613,7 @@
 
         <ul class="contact-grid">
           <li>
-            <a href="mailto:dstarbow@gmail.com" target="_blank" rel="noopener" class="contact-card" data-tilt
+            <a href="mailto:dstarbow@gmail.com" class="contact-card" data-tilt
               data-reveal>
               <span class="contact-icon"><svg class="icon" aria-hidden="true">
                   <use href="#i-mail" />
@@ -656,7 +663,7 @@
         </ul>
 
         <p class="contact-cta" data-reveal style="--reveal-delay:200ms">
-          <a href="mailto:dstarbow@gmail.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg">Send an
+          <a href="mailto:dstarbow@gmail.com" class="btn btn-primary btn-lg">Send an
             email</a>
         </p>
       </div>
@@ -686,7 +693,7 @@
             aria-label="LinkedIn"><svg class="icon" aria-hidden="true">
               <use href="#i-linkedin" />
             </svg></a></li>
-        <li><a href="mailto:dstarbow@gmail.com" target="_blank" rel="noopener" aria-label="Email"><svg class="icon"
+        <li><a href="mailto:dstarbow@gmail.com" aria-label="Email"><svg class="icon"
               aria-hidden="true">
               <use href="#i-mail" />
             </svg></a></li>
@@ -726,11 +733,11 @@
     <div class="monitor-shell"></div>
   </div>
 
-  <audio id="bg-music" src="assets/audio/8-bit-dreamscape.mp3" loop preload="auto"></audio>
+  <audio id="bg-music" src="assets/audio/8-bit-dreamscape.mp3?v=2" loop preload="auto"></audio>
 
-  <script src="assets/script/preloader.js?v=18"></script>
+  <script src="assets/script/preloader.js?v=19"></script>
   <script src="assets/script/retro-bg.js?v=18"></script>
-  <script src="assets/script/main.js?v=19"></script>
+  <script src="assets/script/main.js?v=20"></script>
 </body>
 
 </html>

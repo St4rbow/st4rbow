@@ -3,6 +3,7 @@
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var whenPreloaded = window.whenPreloaded || function (fn) { fn(); };
+  var holdPreloader = window.holdPreloader || function () {};
   var header = document.getElementById('site-header');
 
   function initYear() {
@@ -128,20 +129,34 @@
     var VOLUME = 0.35;
     var STEP = 0.05;
     var MUTED_KEY = 'music-muted';
+    var PLAY_WAIT_MS = 4000;
     var wantOn = false;
     var fadeTimer;
+
+    // Missing or undecodable file: log it and keep the toggle off instead of failing silently.
+    audio.addEventListener('error', function () {
+      console.warn('Background music failed to load:', audio.error);
+      wantOn = false;
+      setOn(false);
+    });
+
+    function reportMusicError(error) {
+      console.warn('Background music could not play:', error);
+    }
 
     function fadeTo(target, done) {
       clearInterval(fadeTimer);
       fadeTimer = setInterval(function () {
-        var diff = target - audio.volume;
-        if (Math.abs(diff) <= STEP) {
-          audio.volume = target;
-          clearInterval(fadeTimer);
-          if (done) done();
-          return;
+        var before = audio.volume;
+        var diff = target - before;
+        if (Math.abs(diff) > STEP) {
+          audio.volume = before + (diff > 0 ? STEP : -STEP);
+          // iOS keeps volume fixed at 1, so finish at once there instead of fading forever.
+          if (audio.volume !== before) return;
         }
-        audio.volume += diff > 0 ? STEP : -STEP;
+        audio.volume = target;
+        clearInterval(fadeTimer);
+        if (done) done();
       }, 40);
     }
 
@@ -190,19 +205,26 @@
     button.addEventListener('click', function () {
       rememberMuted(wantOn);
       if (wantOn) stop();
-      else start().catch(function () {});
+      else start().catch(reportMusicError);
     });
 
     // Browsers refuse audible autoplay before the visitor interacts, so the preloader waits for one click.
     function waitForConnect(preloader) {
       var enter = document.getElementById('preloader-enter');
       return new Promise(function (resolve) {
-        function connect() {
+        function release() {
           preloader.removeEventListener('click', connect);
           document.removeEventListener('keydown', connect);
-          start().catch(function () {});
+          audio.removeEventListener('error', release);
           resolve();
         }
+        function connect() {
+          release();
+          start().catch(reportMusicError);
+        }
+        // A broken file has nothing to unlock, so do not keep the visitor at the gate.
+        if (audio.error) return resolve();
+        audio.addEventListener('error', release);
         preloader.removeAttribute('aria-hidden');
         preloader.classList.add('is-waiting');
         enter.hidden = false;
@@ -212,10 +234,19 @@
       });
     }
 
-    window.holdPreloader(function (preloader) {
+    holdPreloader(function (preloader) {
       if (wasMuted()) return;
       audio.currentTime = 0;
-      return start().catch(function () {
+      // A stalled download keeps play() pending, so stop holding the page; the music still fades in when it arrives.
+      var giveUp = new Promise(function (resolve) {
+        setTimeout(resolve, PLAY_WAIT_MS);
+      });
+      return Promise.race([start(), giveUp]).catch(function (error) {
+        // Only a blocked autoplay can be fixed by a click; other failures would just wait forever.
+        if (error.name !== 'NotAllowedError') {
+          reportMusicError(error);
+          return;
+        }
         return waitForConnect(preloader);
       });
     });

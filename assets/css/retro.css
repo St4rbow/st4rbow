@@ -167,6 +167,26 @@ html {
   cursor: pointer;
 }
 
+/* Reloads in the same session squeeze the intro into the shorter hold set in preloader.js. */
+.preloader.is-repeat .pl-mesh,
+.preloader.is-repeat .pl-human {
+  animation-duration: 0.6s;
+  animation-delay: 0s;
+}
+
+.preloader.is-repeat .pl-flare {
+  animation-delay: 0.35s, 0.9s;
+}
+
+.preloader.is-repeat .preloader-ui {
+  animation-duration: 0.4s;
+  animation-delay: 0.1s;
+}
+
+.preloader.is-repeat .preloader-bar span {
+  animation-duration: 0.9s;
+}
+
 @keyframes enter-blink {
   50% { background: var(--yellow); }
 }

@@ -275,9 +275,10 @@ main {
   animation: eq-bounce 0.9s steps(4) infinite;
 }
 
-.sound-bars i:nth-child(2) { animation-delay: -0.3s; }
-.sound-bars i:nth-child(3) { animation-delay: -0.6s; }
-.sound-bars i:nth-child(4) { animation-delay: -0.15s; }
+/* Must outrank the `animation` shorthand above, which would otherwise reset every delay to 0. */
+.sound-toggle.is-on .sound-bars i:nth-child(2) { animation-delay: -0.3s; }
+.sound-toggle.is-on .sound-bars i:nth-child(3) { animation-delay: -0.6s; }
+.sound-toggle.is-on .sound-bars i:nth-child(4) { animation-delay: -0.15s; }
 
 @keyframes eq-bounce {
   0%, 100% { height: 4px; }
@@ -724,7 +725,7 @@ mark {
   color: var(--ink-line);
 }
 
-/* The PNG has ~25% empty space above the figure; offset and scale so the figure itself fills the frame. */
+/* The photo has ~25% empty space above the figure; offset and scale so the figure itself fills the frame. */
 .hero-pic-frame img {
   position: absolute;
   top: -34%;
@@ -836,7 +837,8 @@ mark {
 .c-key { color: var(--green); }
 .c-var { color: var(--yellow); }
 .c-prop { color: var(--cream); }
-.c-str { color: var(--pink); }
+/* A touch lighter than --pink so small code text clears 4.5:1 contrast on the panel. */
+.c-str { color: #ea4a62; }
 .c-bool { color: var(--green); }
 
 .about-text {
